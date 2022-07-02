@@ -4,12 +4,9 @@ const axios = require('axios').default;
 
 function App() {
 
-  const access_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDb3N5bGltZTAwMCIsInVzZXJuYW1lIjoiQ29zeWxpbWUwMDAiLCJpYXQiOjE2NTY4MDA4MzksImV4cCI6MTY1NjgwMTQzOX0.kxrsyyweb99xOipZO30RZjAx-nN7O5-tsdZDz1YxP9A';
+  const access_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDb3N5bGltZTAwMCIsInVzZXJuYW1lIjoiQ29zeWxpbWUwMDAiLCJpYXQiOjE2NTY4MDI4NDYsImV4cCI6MTY1NjgwMzQ0Nn0.SobBplx8XXQteS3jc5sfsORs9A0zUobaJla1XRC3CmQ';
 
   const [calls, setCalls] = useState([])
-
-  console.log(calls);
-  
 
   function getCalls() {
     axios.get('https://frontend-test-api.aircall.io/calls?offset=5&limit=5', {
@@ -27,7 +24,7 @@ function App() {
       <ul>
         {calls.map(
           (item: any) => {
-            return <li>{item.from}</li>
+            return <li key={item.id}>{item.from}</li>
           }
         )}
       </ul>
