@@ -37,8 +37,8 @@ const CallItem: FC<CallItemProps> = ({ call }) => {
             ret += "" + hrs + " hours " + (mins < 10 ? "0" : "");
         }
 
-        ret += "" + mins + " minutes" + (secs < 10 ? "0" : "");
-        ret += " " + secs + " second";
+        ret += "" + mins + " minutes " + (secs < 10 ? "0" : "");
+        ret += "" + secs + " second";
         return ret;
     }
 

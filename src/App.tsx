@@ -26,7 +26,7 @@ function App() {
   const [calls, setCalls] = useState<object[]>([])
 
   // Get calls from api when rendered for the first time
-  useEffect(() => { getCalls(10) }, [])
+  useEffect(() => { getCalls(25) }, [])
 
   return (
     <CallContext.Provider value={calls}>
