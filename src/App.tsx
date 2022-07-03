@@ -12,10 +12,10 @@ const axios = require('axios').default;
 
 function App() {
   // Access key changes every 10 minutes so assinged a variable to it
-  const access_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDb3N5bGltZTAwMCIsInVzZXJuYW1lIjoiQ29zeWxpbWUwMDAiLCJpYXQiOjE2NTY4NjU0MjQsImV4cCI6MTY1Njg2NjAyNH0.BSjCdqZIa2aqHf0d8Gd5s4UB-PV4w1FdrI308Z7Geos';
+  const access_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDb3N5bGltZTAwMCIsInVzZXJuYW1lIjoiQ29zeWxpbWUwMDAiLCJpYXQiOjE2NTY4OTEyMjAsImV4cCI6MTY1Njg5MTgyMH0.XNxJF_NBQCpJlUENNYc3VJmrX1lbun9skE9LkR2WCDw';
 
-  function getCalls() {
-    axios.get('https://frontend-test-api.aircall.io/calls?offset=25&limit=25', {
+  function getCalls(limit:number) {
+    axios.get(`https://frontend-test-api.aircall.io/calls?offset=${limit}&limit=${limit}`, {
       headers: {
         "Authorization": `Bearer ${access_token}`
       }
@@ -26,7 +26,7 @@ function App() {
   const [calls, setCalls] = useState<object[]>([])
 
   // Get calls from api when rendered for the first time
-  useEffect(() => { getCalls() }, [])
+  useEffect(() => { getCalls(10) }, [])
 
   return (
     <CallContext.Provider value={calls}>

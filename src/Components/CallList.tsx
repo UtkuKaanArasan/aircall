@@ -2,7 +2,7 @@
 import React, { FC, useContext } from "react";
 //Components
 import { CallContext } from "../Context";
-import CallItem from "./CallItem";
+import CallItem from "./CallItem/CallItem";
 
 
 const CallList: FC = () => {
@@ -17,7 +17,6 @@ const CallList: FC = () => {
     } else {
         return (
             <>
-                <h1>Calls</h1>
                 {
                     calls.map(
                         (item: any) => {
