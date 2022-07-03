@@ -1,23 +1,16 @@
-import React, { useContext } from "react";
-import { CallContext } from "../Context";
+// React, Hooks, Typescript
+import React, { FC, useContext } from "react";
 
+//To bypass typescript - For some reason it can't see the keys of the object
+interface CallItemProps{call: any;}
 
-const CallItem = () => {
-
-    const calls: object[] = useContext<object[]>(CallContext);
-
+const CallItem:FC<CallItemProps> = ({call}) => {
     return (
+        //test code
         <div>
-            {
-                calls.map((item:any) => {
-                    return (<li>{item.id }</li> )
-                })
-            }
+            {call.from}
         </div>
     )
 }
-
-
-
 
 export default CallItem;
