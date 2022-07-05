@@ -4,7 +4,6 @@ import React, { FC, useContext } from "react";
 import { CallContext } from "../Context";
 import CallItem from "./CallItem/CallItem";
 
-
 const CallList: FC = () => {
 
     const calls: object[] = useContext(CallContext)
@@ -12,7 +11,7 @@ const CallList: FC = () => {
     // If there's no calls it will show 'No calls found else will show the calls
     if (calls.length < 1) {
         return (
-            <h1>No calls found</h1>
+            <h1 style={{color:'white'}}>No calls found</h1>
         )
     } else {
         return (

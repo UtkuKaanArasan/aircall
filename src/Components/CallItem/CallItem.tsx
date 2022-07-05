@@ -17,6 +17,8 @@ import {
 } from "@aircall/tractor";
 // React, Typescript
 import React, { FC } from "react";
+//React Router
+import { useNavigate } from 'react-router-dom';
 // fancyTimeFormat function
 import {fancyTimeFormat} from "../../functions/functions"
 
@@ -36,10 +38,17 @@ const CallItem: FC<CallItemProps> = ({ call }) => {
         }
     }
 
+    // Routes to call details
+    const navigate = useNavigate();
+    function handleClick() {
+        navigate(`/call/${call.id}`)
+        window.scrollTo(0, 0)
+    }
+
     return (
         //test code
         <Tractor injectStyle>
-            <Grid className={styling.container} gridTemplateColumns="auto auto auto" gridAutoRows="128px" gridGap={3}>
+            <Grid onClick={handleClick} className={styling.container} gridTemplateColumns="auto auto auto" gridAutoRows="128px" gridGap={3}>
                 <Flex justifyContent="center" alignItems="center">
                     {call.direction === 'inbound' ? <CallInboundFilled /> : <CallOutboundFilled />}
                 </Flex>
