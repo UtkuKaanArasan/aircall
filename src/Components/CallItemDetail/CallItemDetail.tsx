@@ -1,13 +1,13 @@
 // Styling
 import styled from './CallItemDetail.module.css'
 // Tractor
-import { 
-    Tractor, 
+import {
+    Tractor,
     // layout
-    Flex, 
-    Spacer, 
+    Flex,
+    Spacer,
     //Typography
-    Typography, 
+    Typography,
     // Close button
     CloseCircleFilled
 } from '@aircall/tractor';
@@ -70,9 +70,30 @@ const CallItemDetail: FC = () => {
                     <Typography variant='displayS2'>
                         Created at: {call?.created_at}
                     </Typography>
+                    <Typography variant='displayM'>Note details: </Typography>
+                    <div>
+                        {
+                            // if there is no notes it renders this
+                            call?.notes.length < 1 ?
+                                <Typography variant='displayM'>No notes available</Typography>
+                                :
+                                //if there is notes it renders this
+                                call?.notes.map((item: any) => {
+                                    return (
+                                        <React.Fragment key={item?.id}>
+                                            <Typography variant='displayS2'>
+                                                Note id: {item?.id}
+                                            </Typography>
+                                            <Typography variant='displayS2'>
+                                                Note Content: {item?.content}
+                                            </Typography>
+                                            <br />
+                                        </React.Fragment>
+                                    )
+                                })
+                        }
+                    </div>
                 </Spacer>
-                <p>Note details</p>
-
             </Flex>
         </Tractor>
     )

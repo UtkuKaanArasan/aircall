@@ -46,7 +46,6 @@ const CallItem: FC<CallItemProps> = ({ call }) => {
     }
 
     return (
-        //test code
         <Tractor injectStyle>
             <Grid onClick={handleClick} className={styling.container} gridTemplateColumns="auto auto auto" gridAutoRows="128px" gridGap={3}>
                 <Flex justifyContent="center" alignItems="center">
