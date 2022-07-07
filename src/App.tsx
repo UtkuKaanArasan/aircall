@@ -7,7 +7,7 @@ import access_token from './access_token';
 //Context provider
 import { CallContext } from './Context'
 //Components
-import CallList from './Components/CallList';
+import CallList from './Components/CallList/CallList';
 import CallItemDetail from './Components/CallItemDetail/CallItemDetail';
 // React Router
 import { Routes, Route } from 'react-router-dom';

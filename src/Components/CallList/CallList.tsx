@@ -1,8 +1,8 @@
 //React, Hooks, Typescript
 import React, { FC, useContext } from "react";
 //Components
-import { CallContext } from "../Context";
-import CallItem from "./CallItem/CallItem";
+import { CallContext } from "../../Context";
+import CallItem from "../CallItem/CallItem";
 
 const CallList: FC = () => {
 
