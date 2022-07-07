@@ -1,3 +1,0 @@
-const access_token: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDb3N5bGltZTAwMCIsInVzZXJuYW1lIjoiQ29zeWxpbWUwMDAiLCJpYXQiOjE2NTcyMjkwMTcsImV4cCI6MTY1NzIyOTYxN30.HpA1-Erq8vzQfZ24lmGuWAOveIp_fbKMtWojKbf_XpU';
-
-export default access_token;
