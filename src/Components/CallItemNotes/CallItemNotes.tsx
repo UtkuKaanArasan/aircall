@@ -56,9 +56,17 @@ const CallItemNotes: FC<CallItemNotesProps> = ({ call, getCalls }) => {
             "Content-type": "text/plain",
         },
         body: {
-            "content": input.toString()
+            "content": input
         }
     }
+
+    // the request i make
+    console.log(submitConfig)
+    // the typeof the content that i send
+    console.log(typeof submitConfig.body.content)
+    // the length of the content that i send
+    console.log(submitConfig.body.content.length)
+    //but i get status 400 "content must be string and content should not be empty"
 
     async function submitButtonHandler() {
         // It doesn't work and i don't know why pls help
@@ -69,12 +77,12 @@ const CallItemNotes: FC<CallItemNotesProps> = ({ call, getCalls }) => {
                         console.log(res);
                         console.log('yes yes');
                         getCalls();
-                    }
+                    },
+                    fail => {console.log(fail)}
                 )
                 .catch(err => { console.log(err); })
         }
     }
-
 
     return (
         <div>
