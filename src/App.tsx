@@ -11,8 +11,6 @@ import CallList from './Components/CallList/CallList';
 import CallItemDetail from './Components/CallItemDetail/CallItemDetail';
 // React Router
 import { Routes, Route } from 'react-router-dom';
-import Sidebar from './Components/Sidebar/Sidebar';
-import ErrorBoundary from './Components/ErrorBoundary/Error';
 //Dependendies
 const axios = require('axios').default;
 
@@ -39,12 +37,9 @@ function App() {
         <Routes> {/* Router for call details */}
           <Route path='/call/:id' element={<CallItemDetail getCalls={getCalls} />} />
       </Routes>
-      <ErrorBoundary>
         <div className="App">
-          <Sidebar />
           <CallList />
         </div>
-      </ErrorBoundary>
     </CallContext.Provider>
   );
 }
