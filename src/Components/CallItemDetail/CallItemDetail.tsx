@@ -59,6 +59,8 @@ const CallItemDetail: FC<CallItemDetailProps> = ({getCalls}) => {
             .catch(err => { console.log(err);})
     }
 
+    const jsDate = new Date(call?.created_at)
+
     return (
         <Tractor injectStyle>
             <Flex
@@ -103,7 +105,10 @@ const CallItemDetail: FC<CallItemDetailProps> = ({getCalls}) => {
                         Call Type: {call?.call_type}
                     </Typography>
                     <Typography variant='displayS2'>
-                        Created at: {call?.created_at}
+                        Created at (day/month/year):
+                        {
+                        ` ${jsDate.getDate()}-${jsDate.getMonth()}-${jsDate.getFullYear()}`
+                        }
                     </Typography>
                     <Typography variant='displayS2'>
                         Is archived: {call?.is_archived.toString()}

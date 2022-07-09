@@ -61,11 +61,11 @@ const CallItemNotes: FC<CallItemNotesProps> = ({ call, getCalls }) => {
     }
 
     // the request i make
-    console.log(submitConfig)
+    // // console.log(submitConfig)
     // the typeof the content that i send
-    console.log(typeof submitConfig.body.content)
+    // // console.log(typeof submitConfig.body.content)
     // the length of the content that i send
-    console.log(submitConfig.body.content.length)
+    // // console.log(submitConfig.body.content.length)
     //but i get status 400 "content must be string and content should not be empty"
 
     async function submitButtonHandler() {
