@@ -59,7 +59,7 @@ const CallItemDetail: FC<CallItemDetailProps> = ({getCalls}) => {
             .catch(err => { console.log(err);})
     }
 
-    const jsDate = new Date(call?.created_at)
+    const jsDate = new Date(call.created_at)
 
     return (
         <Tractor injectStyle>
@@ -81,28 +81,28 @@ const CallItemDetail: FC<CallItemDetailProps> = ({getCalls}) => {
                         }
                     </Flex>
                     <Typography variant='displayS2'>
-                        ID: {call?.id}
+                        ID: {call.id}
                     </Typography>
                     <Typography variant='displayS2'>
-                        Direction: {call?.direction}
+                        Direction: {call.direction}
                     </Typography>
                     <Typography variant='displayS2'>
-                        From: {call?.from}
+                        From: {call.from}
                     </Typography>
                     <Typography variant='displayS2'>
-                        Via: {call?.via}
+                        Via: {call.via}
                     </Typography>
                     <Typography variant='displayS2'>
-                        To: {call?.to}
+                        To: {call.to}
                     </Typography>
                     <Typography variant='displayS2'>
-                        Duration(seconds): {call?.duration}
+                        Duration(seconds): {call.duration}
                     </Typography>
                     <Typography variant='displayS2'>
-                        Duration(Formatted): {fancyTimeFormat(call?.duration)}
+                        Duration(Formatted): {fancyTimeFormat(call.duration)}
                     </Typography>
                     <Typography variant='displayS2'>
-                        Call Type: {call?.call_type}
+                        Call Type: {call.call_type}
                     </Typography>
                     <Typography variant='displayS2'>
                         Created at (day/month/year):
@@ -111,7 +111,7 @@ const CallItemDetail: FC<CallItemDetailProps> = ({getCalls}) => {
                         }
                     </Typography>
                     <Typography variant='displayS2'>
-                        Is archived: {call?.is_archived.toString()}
+                        Is archived: {call.is_archived.toString()}
                     </Typography>
                     <Typography variant='displayM'>Note details: </Typography>
                     {/* Notes are down below */}
