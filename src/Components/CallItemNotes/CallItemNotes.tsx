@@ -13,9 +13,11 @@ import {
 } from "@aircall/tractor";
 // Access token
 import access_token from "../../access_token";
+// Calls interface
+import { Calls } from '../../Context';
 
 interface CallItemNotesProps {
-    call: any;
+    call: Calls;
     getCalls: () => any;
 }
 

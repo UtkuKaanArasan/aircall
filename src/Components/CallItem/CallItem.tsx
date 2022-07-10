@@ -17,13 +17,15 @@ import {
 } from "@aircall/tractor";
 // React, Typescript
 import React, { FC } from "react";
-//React Router
+// React Router
 import { useNavigate } from 'react-router-dom';
 // fancyTimeFormat function
-import {fancyTimeFormat} from "../../functions/functions"
+import { fancyTimeFormat } from "../../functions/functions"
+// Call interface
+import { Calls } from '../../Context';
 
 //To bypass typescript - For some reason it can't see the keys of the object
-interface CallItemProps { call: any; }
+interface CallItemProps { call: Calls; }
 
 const CallItem: FC<CallItemProps> = ({ call }) => {
 

@@ -20,7 +20,7 @@ const CallList: FC = () => {
             <>
                 {
                     calls.map(
-                        (item: any) => {
+                        (item: Calls) => {
                             return (
                                 <CallItem key={item.id} call={item} />
                             )

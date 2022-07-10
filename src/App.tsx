@@ -35,7 +35,7 @@ function App() {
   useEffect(() => { getCalls() }, [])
 
   //Checks whether the app is at home page or not
-  const match = useMatch('/')
+  const home = useMatch('/')
 
   return (
     <CallContext.Provider value={calls}>
@@ -43,9 +43,8 @@ function App() {
         <Route path='/call/:id' element={<CallItemDetail getCalls={getCalls} />} />
       </Routes>
       <div className="App">
-        {/* This allows to render call list if we are on root path */}
-        {
-          match ?
+        {/* This allows to render call list if we are on root path */
+          home ?
             <>
               <Header />
               <CallList />

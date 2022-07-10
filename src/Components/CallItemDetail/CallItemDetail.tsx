@@ -12,6 +12,7 @@ import {
     CloseCircleFilled,
     BookmarkFilled,
     BookmarkOutlined,
+    PlusCircleFilled
 } from '@aircall/tractor';
 // React, Typescript
 import React, { FC, useContext } from "react";
@@ -25,21 +26,23 @@ import { CallContext } from '../../Context';
 import { fancyTimeFormat } from '../../functions/functions';
 // Components
 import CallItemNotes from '../CallItemNotes/CallItemNotes';
+// Calls interface
+import { Calls } from '../../Context';
 
-interface CallItemDetailProps{
+interface CallItemDetailProps {
     // To refresh the data after changing things
     getCalls: () => any;
 }
 
-const CallItemDetail: FC<CallItemDetailProps> = ({getCalls}) => {
+const CallItemDetail: FC<CallItemDetailProps> = ({ getCalls }) => {
 
     // To get the call clicked
     const param = useParams()
     const calls = useContext(CallContext)
-    const callFilter:object[] = calls.filter((item: any) => {
-        return item?.id === param.id
+    const callFilter: object[] = calls.filter((item: Calls) => {
+        return item.id === param.id
     })
-    const call:any = callFilter[0]
+    const call: any = callFilter[0]
 
     // To navigate home when closed
     const navigate = useNavigate()
@@ -55,8 +58,8 @@ const CallItemDetail: FC<CallItemDetailProps> = ({getCalls}) => {
                 "Authorization": `Bearer ${access_token}`
             }
         })
-            .then(res => {getCalls()})
-            .catch(err => { console.log(err);})
+            .then(res => { getCalls() })
+            .catch(err => { console.log(err); })
     }
 
     const jsDate = new Date(call.created_at)
@@ -107,11 +110,13 @@ const CallItemDetail: FC<CallItemDetailProps> = ({getCalls}) => {
                     <Typography variant='displayS2'>
                         Created at (day/month/year):
                         {
-                        ` ${jsDate.getDate()}-${jsDate.getMonth()}-${jsDate.getFullYear()}`
+                            ` ${jsDate.getDate()}-${jsDate.getMonth()}-${jsDate.getFullYear()}`
                         }
                     </Typography>
                     <Typography variant='displayS2'>
-                        Is archived: {call.is_archived.toString()}
+                        <Flex>
+                            Is archived: {call.is_archived ? <PlusCircleFilled size={32} color="primary.base" /> : <CloseCircleFilled size={32} color="red.base" />}
+                        </Flex>
                     </Typography>
                     <Typography variant='displayM'>Note details: </Typography>
                     {/* Notes are down below */}
