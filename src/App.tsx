@@ -11,6 +11,7 @@ import { Calls } from './Context';
 //Components
 import CallList from './Components/CallList/CallList';
 import CallItemDetail from './Components/CallItemDetail/CallItemDetail';
+import Header from './Components/Header/Header';
 // React Router
 import { Routes, Route, useMatch } from 'react-router-dom';
 //Dependendies
@@ -46,6 +47,7 @@ function App() {
         {
           match ?
             <>
+              <Header />
               <CallList />
             </>
             :
