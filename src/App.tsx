@@ -46,7 +46,7 @@ function App() {
         {/* This allows to render call list if we are on root path */
           home ?
             <>
-              <Header />
+              <Header setCalls={setCalls} />
               <CallList />
             </>
             :

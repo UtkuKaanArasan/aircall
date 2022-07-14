@@ -1,7 +1,7 @@
 // Styling
 import styled from "./Header.module.css"
 // React
-import { FC } from "react";
+import { FC, useContext } from "react";
 // Tractor
 import {
     Tractor,
@@ -16,30 +16,67 @@ import {
     DropdownButton,
     Menu,
     MenuItem,
+    Button,
+    WindowsFilled,
 } from "@aircall/tractor";
+// Call context
+import { CallContext } from "../../Context";
+// Call interface
+import { Calls } from "../../Context";
 
+interface HeaderProps{
+    setCalls: any;
+}
 
-const Header: FC = () => {
+const Header: FC<HeaderProps> = ({setCalls}) => {
 
-    function dropdownHandler(e:any) {
+    const calls = useContext(CallContext)
+
+    function reloadButton():void {
+        window.location.reload()
+    }
+
+    function filterCalls(filter: string) {
+        let filteredCalls: Calls[];
+        if (filter.toLowerCase() === 'inbound' || filter.toLowerCase() === 'outbound') {
+            filteredCalls = calls.filter((item:any) => {
+                return item.direction === filter
+            })
+        } else if (filter.toLowerCase() === 'archived') {
+            filteredCalls = calls.filter((item: any) => {
+                return item.is_archived === true
+            })
+        } else if (filter.toLowerCase() === 'answered' || filter.toLowerCase() === 'missed' || filter.toLowerCase() === 'voicemail') {
+            filteredCalls = calls.filter((item: any) => {
+                return item.call_type === filter
+            })
+        } 
+        setCalls(filteredCalls)
+    }
+
+    function dropdownHandler(e: any) {
         switch (e.target.innerText) {
             case 'Inbound':
-                console.log('inbound');
+                filterCalls('inbound');
                 break;
             case 'Outbound':
-                console.log('outbound');
+                filterCalls('outbound');
                 break;
             case 'Archived':
-                console.log('archived');
+                filterCalls('archived');
                 break;
             case 'Answered':
-                console.log('answered');
+                filterCalls('answered');
                 break;
             case 'Missed':
-                console.log('missed');
+                filterCalls('missed');
                 break;
             case 'Voicemail':
-                console.log('voicemail');
+                reloadButton()
+                filterCalls('voicemail');
+                break;
+            case 'All':
+                reloadButton()
                 break;
         }
     }
@@ -50,6 +87,9 @@ const Header: FC = () => {
                 <Typography variant="displayL">
                     Aircall
                 </Typography>
+                <Button onClick={reloadButton}>
+                    Refresh
+                </Button>
                 <Dropdown trigger={<DropdownButton mode="link" variant="primary" iconClose={<PreferencesOutlined />}>
                     Filters
                 </DropdownButton>} position="bottom" anchor="end">
