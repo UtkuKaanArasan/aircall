@@ -48,7 +48,9 @@ const CallItemNotes: FC<CallItemNotesProps> = ({ call, getCalls }) => {
             Authorization: string;
             "Content-type": string;
         };
-        body: any;
+        body: {
+            "content": string;
+        };
     }
 
     const submitConfig:submit = {
@@ -90,18 +92,18 @@ const CallItemNotes: FC<CallItemNotesProps> = ({ call, getCalls }) => {
         <div>
             {
                 // if there is no notes it renders this
-                call?.notes.length < 1 ?
+                call.notes.length < 1 ?
                     <Typography variant='displayM'>No notes available</Typography>
                     :
                     //if there is notes it renders this
-                    call?.notes.map((item: any) => {
+                    call.notes.map((item: any) => {
                         return (
-                            <React.Fragment key={item?.id}>
+                            <React.Fragment key={item.id}>
                                 <Typography variant='displayS2'>
-                                    Note id: {item?.id}
+                                    Note id: {item.id}
                                 </Typography>
                                 <Typography variant='displayS2'>
-                                    Note Content: {item?.content}
+                                    Note Content: {item.content}
                                 </Typography>
                                 <br />
                             </React.Fragment>

@@ -17,7 +17,6 @@ import {
     Menu,
     MenuItem,
     Button,
-    WindowsFilled,
 } from "@aircall/tractor";
 // Call context
 import { CallContext } from "../../Context";
@@ -36,6 +35,7 @@ const Header: FC<HeaderProps> = ({setCalls}) => {
         window.location.reload()
     }
 
+    // Filtering function
     function filterCalls(filter: string) {
         let filteredCalls: Calls[];
         if (filter.toLowerCase() === 'inbound' || filter.toLowerCase() === 'outbound') {
@@ -50,10 +50,12 @@ const Header: FC<HeaderProps> = ({setCalls}) => {
             filteredCalls = calls.filter((item: any) => {
                 return item.call_type === filter
             })
-        } 
+        }
+        // It doesn't create problems, no worries
         setCalls(filteredCalls)
     }
 
+    // Filter dropdown handler
     function dropdownHandler(e: any) {
         switch (e.target.innerText) {
             case 'Inbound':
