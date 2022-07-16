@@ -14,14 +14,15 @@ import CallItemDetail from './Components/CallItemDetail/CallItemDetail';
 import Header from './Components/Header/Header';
 // React Router
 import { Routes, Route, useMatch } from 'react-router-dom';
+import Footer from './Components/PageSelect/PageSelect';
 //Dependendies
 const axios = require('axios').default;
 
 function App() {
 
   function getCalls() {
-    const apiLimit: number = 15
-    axios.get(`https://frontend-test-api.aircall.io/calls?offset=${apiLimit}&limit=${apiLimit}`, {
+    const apiLimit: number = 10
+    axios.get(`https://frontend-test-api.aircall.io/calls?offset=${page}&limit=${apiLimit}`, {
       headers: {
         "Authorization": `Bearer ${access_token}`
       }
@@ -30,9 +31,13 @@ function App() {
   }
 
   const [calls, setCalls] = useState<Calls[]>([])
+  const [page, setPage] = useState<number>(1)
 
   // Get calls from api when rendered for the first time
   useEffect(() => { getCalls() }, [])
+
+  // Whenever page changes it gets the calls from api
+  useEffect(() => {getCalls()}, [page])
 
   //Checks whether the app is at home page or not
   const home = useMatch('/')
@@ -47,7 +52,9 @@ function App() {
           home ?
             <>
               <Header setCalls={setCalls} />
+              <Footer page={page} setPage={setPage} />
               <CallList />
+              <Footer page={page} setPage={setPage} />
             </>
             :
             null
